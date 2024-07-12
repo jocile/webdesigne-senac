@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário</title>
+  </head>
+  <body class="m-5">
+    <!--Form - informa ao navegador que iniciará um formulário-->
+    <form>
+      <!--Fieldset - Cria um conjunto de dados com uma borda-->
+      <fieldset>
+        <!--legend - adiciona uma legenda/um texto que categoriza o fieldset-->
+        <legend>Dados pessoais</legend>
+        <!--input - entrada e saída de dados, pode-se configurar o tipo (text, number, data), o name é uma identificação individual-->
+        Nome: <input type="text" name="nome" /><br />
+        Idate: <input type="number" name="idade" min="0" max="100" /><br />
+        Data de nascimento: <input type="datetime-local" name="data" /><br />
+      </fieldset>
+      <fieldset>
+        <legend>Dados profissionais</legend>
+        Escolaridade:<br />
+        <!-- Type="radio" - Formato circular, e só permite escolher uma opção do conjunto, precisa que todos tenham o mesmo nome-->
+        <input
+          type="radio"
+          name="escolaridade"
+          value="Ensino Fundamental"
+        />Ensino Fundamental<br />
+        <input type="radio" name="escolaridade" value="Ensino Médio" />Ensino
+        Médio<br />
+        <input type="radio" name="escolaridade" value="Ensino Superior" />Ensino
+        Superior<br />
+        <input
+          type="radio"
+          name="escolaridade"
+          value="Mestrado"
+        />Mestrado<br />
+        <input
+          type="radio"
+          name="escolaridade"
+          value="Doutorado"
+        />Doutorado<br />
+        Última experiência:<input type="text" name="experiencia" /><br />
+        <!--placeholder - texto padrão que auxilia o usuário, indicando o que se espera naquele input
+        required - torna o preenchimento do input obrigatório-->
+        Pretenção salarial:<input
+          type="number"
+          name="pretensao"
+          step="0.10"
+          min="0.00"
+          placeholder="0.00"
+          required
+        /><br />
+      </fieldset>
+      <input type="reset" value="Limpar" /><br />
+      <input type="submit" value="Salvar" />
+    </form>
+  </body>
+</html>
