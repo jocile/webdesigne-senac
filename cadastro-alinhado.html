@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulário</title>
+</head>
+
+<body class="m-5">
+  <!--Form - informa ao navegador que iniciará um formulário-->
+  <form>
+    <!--Fieldset - Cria um conjunto de dados com uma borda-->
+    <fieldset>
+      <!--legend - adiciona uma legenda/um texto que categoriza o fieldset-->
+      <legend>Dados pessoais</legend>
+      <!--input - entrada e saída de dados, pode-se configurar o tipo (text, number, data), o name é uma identificação individual-->
+      <table>
+        <tr>
+          <td>
+            Nome:
+          </td>
+          <td>
+            <input type="text" name="nome" /><br />
+          </td>
+          <td>
+            Sobrenome:
+          </td>
+          <td>
+            <input type="text" name="sobrenome">
+          </td>
+        <tr>
+          <td>
+            Data de nascimento:
+          </td>
+          <td>
+            <input type="datetime-local" name="data" />
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+        </tr>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>Dados profissionais</legend>
+      <fieldset>
+        <legend>Escolaridade:</legend>
+        <table>
+          <tr>
+            <td>
+              <!-- Type="radio" - Formato circular, e só permite escolher uma opção do conjunto, precisa que todos tenham o mesmo nome-->
+              <input type="radio" name="escolaridade" value="Ensino Fundamental" />
+            </td>
+            <td>
+              Ensino Fundamental
+            </td>
+            <td>
+              <input type="radio" name="escolaridade" value="Ensino Superior" />
+            </td>
+            <td>
+              Ensino Superior
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" name="escolaridade" value="Ensino Médio" />
+            </td>
+            <td>
+              Ensino Médio
+            </td>
+            <td>
+              <input type="radio" name="escolaridade" value="Mestrado" />
+            </td>
+            <td>
+              Mestrado
+            </td>
+          </tr>
+          <tr>
+            <td>              
+            </td>
+            <td>              
+            </td>
+            <td>
+              <input type="radio" name="escolaridade" value="Doutorado" />
+            </td>
+            <td>
+              Doutorado
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>Experiência:</legend>
+        <table>
+          <tr>
+            <td>
+              Última experiência:
+            </td>
+            <td>
+              <input type="text" name="experiencia" />
+            </td>
+            <td>
+              Pretenção salarial
+            </td>
+            <td>
+              <!--placeholder - texto padrão que auxilia o usuário, indicando o que se espera naquele input
+            required - torna o preenchimento do input obrigatório-->
+            <input type="number" name="pretensao" step="0.10" min="0.00" placeholder="0.00" required />
+            </td>          
+          </tr>
+        </table>
+      </fieldset>
+    </fieldset>
+
+    <br />
+    <div style="display: flex; align-items: center; justify-content: center;">
+    <table style="display: flex;">
+      <tr>
+        <td>
+          <input type="reset" value="Limpar" />
+
+          <input type="submit" value="Salvar" />
+        </td>
+      </tr>
+    </table>
+    </div>
+  </form>
+</body>
+
+</html>
