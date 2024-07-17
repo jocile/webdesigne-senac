@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 624px;
+      margin: auto;
+      border-collapse: collapse;
+      text-align: center; /* left; right; center; justify; */
+      vertical-align: middle; /* top; bottom; middle; */
+    }
+    td {         
+      border: 1px solid #000000;
+      padding: 5px;
+    }
+    th {
+      padding: 20px;
+      background-color: #000000;
+      color: #ffffff;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: coral;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Tabela simples -->
+   <table>
+    <thead>
+      <tr>
+        <th colspan="4" align="center">Quadro de medalhas - Olimpíadas 2021</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>País</td>
+      <td>Ouro</td>
+      <td>Prata</td>
+      <td>Bronze</td>
+    </tr>
+    <tbody>
+      <tr>
+        <td><img width="100" src="usa.png"></td>
+        <td>39</td>
+        <td>41</td>
+        <td>33</td>
+      </tr>
+      <tr>
+        <td><img width="100" src="China.png"></td>
+        <td>38</td>
+        <td>32</td>
+        <td>19</td>
+      </tr>
+      <tr>
+        <td><img width="100" src="Japao.png"></td>
+        <td>27</td>
+        <td>14</td>
+        <td>17</td>
+      </tr>
+      <tr>
+        <td><img width="100" src="Brasil.png"></td>
+        <td>7</td>
+        <td>6</td>
+        <td>8</td>
+      </tr>
+    </tbody>
+   </table>
+   
+</body>
+</html>
