@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="calculo">
+    Número1: <input type="number" name="num1" id="n1"><br>
+    Número2: <input type="number" name="num2" id="n2"><br>
+    Total: <input type="number" name="total" id="total" readonly><br>
+    Média: <input type="number" name="media" id="media" readonly><br>
+    <input type="submit" value="Calcular">
+  </form>
+  <script>
+    const form = document.getElementById('calculo');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      calcular();
+    });
+
+    function calcular() {
+      const num1 = parseFloat(document.getElementById('n1').value);
+      const num2 = parseFloat(document.getElementById('n2').value);
+      const soma = num1 + num2;
+      const media = soma / 2;
+
+      document.getElementById('total').value = soma;
+      document.getElementById('media').value = media;
+    }
+  </script>
+</body>
+</html>
