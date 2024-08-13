@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investmento</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="<KEY>" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 card mt-5">
+        <form id="formulario">
+          <div class="card-header textali mb-3">
+            <h2>Cálculo do investimento</h2>
+
+          </div>
+          <div class="mb-3">
+            <label id="valor" class="form-label">Valor:</label>
+          </div>
+          <div class="mb-3">
+            <label id="taxa" class="form-label">Taxa de juros:</label>            
+          </div>
+          <div class="mb-3">
+            <label id="tempo" class="form-label">Tempo:</label>           
+          </div>
+          <div class="mb-3">
+            <label id="juros" class="form-label">Juros:</label>            
+          </div>
+          <div class="mb-3">
+            <label id="resultado" class="form-label">Resultado:</label>            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    var valor = prompt('Digite o valor a ser investido:');
+    var taxa_de_juros = prompt('Digite a taxa dos juros:');
+    var tempo = prompt('Digite o tempo de investimento:');
+    var juros = parseFloat(valor) * parseFloat(taxa_de_juros)/100 * parseFloat(tempo);
+    var valorInvestido = valor + juros;
+
+    //alert('O valor investido será de R$'+ valorInvestido);
+    document.getElementById('valor').innerHTML = 'Valor investido: R$' + valor;
+    document.getElementById('taxa').innerHTML = 'Taxa de juros:' + taxa_de_juros + '% ao ano';
+    document.getElementById('tempo').innerHTML = 'Tempo: ' + tempo + ' anos';
+    document.getElementById('juros').innerHTML = 'Juros: ' + juros + '% ao ano';   
+    document.getElementById('resultado').innerHTML = 'O valor final será de R$ '+ valorInvestido;
+
+  </script>
+</body>
+</html>
