@@ -1,121 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="container card mt-3">
-        <form id="login">
-            <div class="form-group">
-                <label>Nome:</label>
-                <input class="form-control" type="text" id="nome" required onblur="verificarSeNaoTaVazio(this)">
-                <p id="avisoNome"></p>
-
-            </div>
-            <div class="form-group">
-                <label>Senha</label>
-                <input class="form-control" type="password" id="senha" onfocus="verificarSenha(this)" required>
-                <p id="avisoSenha"></p>
-            </div>
-            <br>
-            <input class="btn btn-primary mb-2" type="submit" value="Entrar">
-        </form>
+      <form id="login">
+        <div class="form-group">
+          <label>Nome:</label>
+          <input
+            class="form-control"
+            type="text"
+            id="nome"
+            required
+            onblur="verificarSeNaoTaVazio(this)"
+          />
+          <p id="avisoNome"></p>
+        </div>
+        <div class="form-group">
+          <label>Senha</label>
+          <input
+            class="form-control"
+            type="password"
+            id="senha"
+            onfocus="verificarSenha(this)"
+            required
+          />
+          <p id="avisoSenha"></p>
+        </div>
+        <br />
+        <input class="btn btn-primary mb-2" type="submit" value="Entrar" />
+      </form>
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const form = document.getElementById('login');
-          const nome = document.getElementById('nome');
-          const senha = document.getElementById('senha');
-          const avisoNome = document.getElementById('avisoNome');
-          const avisoSenha = document.getElementById('avisoSenha');
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('login')
+        const nome = document.getElementById('nome')
+        const senha = document.getElementById('senha')
+        const avisoNome = document.getElementById('avisoNome')
+        const avisoSenha = document.getElementById('avisoSenha')
 
-          nome.addEventListener('blur', function() {
-            verificarSeNaoTaVazio(this, avisoNome);
-            validarNome(this);
-        });
+        nome.addEventListener('blur', function () {
+          verificarSeNaoTaVazio(this, avisoNome)
+          validarNome(this)
+        })
 
-          senha.addEventListener('focus', function() {
-              verificarSenha(this);
-          });
+        senha.addEventListener('focus', function () {
+          verificarSenha(this)
+        })
 
-          senha.addEventListener('input', function() {
-              verificarSenha(this);
-          });
+        senha.addEventListener('input', function () {
+          verificarSenha(this)
+        })
 
-          form.addEventListener('submit', function(e) {
-              e.preventDefault();
-              if (validarFormulario()) {
-                  alert("Bem-vindo " + nome.value);
-                  // Aqui você pode adicionar a lógica para enviar os dados para o servidor
-              }
-          });
-
-          function verificarSeNaoTaVazio(campo, aviso) {
-              if (campo.value === '') {
-                  aviso.innerHTML = '* Campo obrigatório';
-                  aviso.style.color = 'red';
-              } else {
-                  aviso.innerHTML = "";
-              }
+        form.addEventListener('submit', function (e) {
+          e.preventDefault()
+          if (validarFormulario()) {
+            alert('Bem-vindo ' + nome.value)
+            // Aqui você pode adicionar a lógica para enviar os dados para o servidor
           }
+        })
 
-          function validarNome(campo) {
-            if (campo.value.includes(' ')) {
-                avisoNome.innerHTML = '* O nome não pode conter espaços';
-                avisoNome.style.color = 'red';
-                return false;
-            } else {
-                avisoNome.innerHTML = '';
-                return true;
-            }
+        function verificarSeNaoTaVazio(campo, aviso) {
+          if (campo.value === '') {
+            aviso.innerHTML = '* Campo obrigatório'
+            aviso.style.color = 'red'
+          } else {
+            aviso.innerHTML = ''
+          }
         }
 
-          function verificarSenha(campo) {
-              if (campo.value.length < 8) {
-                  avisoSenha.innerHTML = '* Senha muito curta, a senha deve ter no mínimo 8 caracteres';
-                  avisoSenha.style.color = 'red';
-              } else {
-                  avisoSenha.innerHTML = "";
-              }
+        function validarNome(campo) {
+          if (campo.value.includes(' ')) {
+              avisoNome.innerHTML = '* O nome não pode conter espaços';
+              avisoNome.style.color = 'red';
+              campo.classList.add('is-invalid');
+              campo.classList.remove('is-valid');
+              return false;
+          } else {
+              avisoNome.innerHTML = 'Nome válido';
+              avisoNome.style.color = 'green';
+              campo.classList.add('is-valid');
+              campo.classList.remove('is-invalid');
+              return true;
           }
+      }
 
-          function validarFormulario() {
-            let isValid = true;
-            isValid = verificarSeNaoTaVazio(nome, avisoNome) && isValid;
-            isValid = validarNome(nome) && isValid;
-            isValid = verificarSenha(senha) && isValid;
-            return isValid;
+        function verificarSenha(campo) {
+          const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+          if (!regex.test(campo.value)) {
+              avisoSenha.innerHTML = '* A senha deve ter no mínimo 8 caracteres, incluindo maiúsculas, minúsculas, números e caracteres especiais';
+              avisoSenha.style.color = 'red';
+              return false;
+          } else {
+              avisoSenha.innerHTML = "";
+              return true;
+          }
+      }
+
+        function validarFormulario() {
+          let isValid = true
+          isValid = verificarSeNaoTaVazio(nome, avisoNome) && isValid
+          isValid = validarNome(nome) && isValid
+          isValid = verificarSenha(senha) && isValid
+          return isValid
         }
-      });
-  </script>
-</body>
-
+      })
+    </script>
+  </body>
 </html>
