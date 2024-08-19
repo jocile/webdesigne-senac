@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -36,12 +36,13 @@
             <div class="form-group">
                 <label>Nome:</label>
                 <input class="form-control" type="text" id="nome" required onblur="verificarSeNaoTaVazio(this)">
-                <p id='avisoNome'></p>
+                <p id="avisoNome"></p>
 
             </div>
             <div class="form-group">
                 <label>Senha</label>
-                <input class="form-control" type="password" id="senha" required>
+                <input class="form-control" type="password" id="senha" onfocus="verificarSenha(this)" required>
+                <p id="avisoSenha"></p>
             </div>
             <br>
             <input class="btn btn-primary mb-2" type="submit" value="Entrar">
@@ -49,25 +50,72 @@
     </div>
 
     <script>
-        document.getElementById('login').onsubmit = function () {
-            var nome = document.getElementById('nome').value;
-            var senha = document.getElementById('senha').value;
-            alert("Bem-vindo " + nome);
+      document.addEventListener('DOMContentLoaded', function() {
+          const form = document.getElementById('login');
+          const nome = document.getElementById('nome');
+          const senha = document.getElementById('senha');
+          const avisoNome = document.getElementById('avisoNome');
+          const avisoSenha = document.getElementById('avisoSenha');
 
-        };
-        function verificarSeNaoTaVazio(campo) {   
-                if (campo.value == '') {
-                    avisoNome.innerHTML = '* Campo obrigatório';
-                    avisoNome.style.color = 'red';
-                }
-                
-                else {
-                    avisoNome.innerHTML = "";
-                }
+          nome.addEventListener('blur', function() {
+            verificarSeNaoTaVazio(this, avisoNome);
+            validarNome(this);
+        });
+
+          senha.addEventListener('focus', function() {
+              verificarSenha(this);
+          });
+
+          senha.addEventListener('input', function() {
+              verificarSenha(this);
+          });
+
+          form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              if (validarFormulario()) {
+                  alert("Bem-vindo " + nome.value);
+                  // Aqui você pode adicionar a lógica para enviar os dados para o servidor
+              }
+          });
+
+          function verificarSeNaoTaVazio(campo, aviso) {
+              if (campo.value === '') {
+                  aviso.innerHTML = '* Campo obrigatório';
+                  aviso.style.color = 'red';
+              } else {
+                  aviso.innerHTML = "";
+              }
+          }
+
+          function validarNome(campo) {
+            if (campo.value.includes(' ')) {
+                avisoNome.innerHTML = '* O nome não pode conter espaços';
+                avisoNome.style.color = 'red';
+                return false;
+            } else {
+                avisoNome.innerHTML = '';
+                return true;
+            }
         }
 
-        
-    </script>
+          function verificarSenha(campo) {
+              if (campo.value.length < 8) {
+                  avisoSenha.innerHTML = '* Senha muito curta, a senha deve ter no mínimo 8 caracteres';
+                  avisoSenha.style.color = 'red';
+              } else {
+                  avisoSenha.innerHTML = "";
+              }
+          }
+
+          function validarFormulario() {
+            let isValid = true;
+            isValid = verificarSeNaoTaVazio(nome, avisoNome) && isValid;
+            isValid = validarNome(nome) && isValid;
+            isValid = verificarSenha(senha) && isValid;
+            return isValid;
+        }
+      });
+  </script>
 </body>
 
 </html>
