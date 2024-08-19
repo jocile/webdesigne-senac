@@ -103,8 +103,10 @@
         form.addEventListener('submit', function (e) {
           e.preventDefault()
           if (validarFormulario()) {
-            alert('Bem-vindo ' + nome.value)
+            loginSucesso(nome.value)
             // Aqui você pode adicionar a lógica para enviar os dados para o servidor
+          } else {
+            exibirErroValidacao()
           }
         })
 
@@ -119,38 +121,84 @@
 
         function validarNome(campo) {
           if (campo.value.includes(' ')) {
-              avisoNome.innerHTML = '* O nome não pode conter espaços';
-              avisoNome.style.color = 'red';
-              campo.classList.add('is-invalid');
-              campo.classList.remove('is-valid');
-              return false;
+            avisoNome.innerHTML = '* O nome não pode conter espaços'
+            avisoNome.style.color = 'red'
+            campo.classList.add('is-invalid')
+            campo.classList.remove('is-valid')
+            return false
           } else {
-              avisoNome.innerHTML = 'Nome válido';
-              avisoNome.style.color = 'green';
-              campo.classList.add('is-valid');
-              campo.classList.remove('is-invalid');
-              return true;
+            avisoNome.innerHTML = 'Nome válido'
+            avisoNome.style.color = 'green'
+            campo.classList.add('is-valid')
+            campo.classList.remove('is-invalid')
+            return true
           }
-      }
+        }
 
         function verificarSenha(campo) {
-          const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+          const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
           if (!regex.test(campo.value)) {
-              avisoSenha.innerHTML = '* A senha deve ter no mínimo 8 caracteres, incluindo maiúsculas, minúsculas, números e caracteres especiais';
-              avisoSenha.style.color = 'red';
-              return false;
+            avisoSenha.innerHTML =
+              '* A senha deve ter no mínimo 8 caracteres, incluindo maiúsculas, minúsculas, números e caracteres especiais'
+            avisoSenha.style.color = 'red'
+            return false
           } else {
-              avisoSenha.innerHTML = "";
-              return true;
+            avisoSenha.innerHTML = 'Senha válida'
+            avisoSenha.style.color = 'green'
+            return true
           }
-      }
+        }
 
         function validarFormulario() {
           let isValid = true
-          isValid = verificarSeNaoTaVazio(nome, avisoNome) && isValid
+          //isValid = verificarSeNaoTaVazio(nome, avisoNome) && isValid
           isValid = validarNome(nome) && isValid
           isValid = verificarSenha(senha) && isValid
           return isValid
+        }
+
+        function loginSucesso(nomeUsuario) {
+          // Criar um elemento de alerta
+          const alertaSucesso = document.createElement('div')
+          alertaSucesso.className =
+            'alert alert-success alert-dismissible fade show'
+          alertaSucesso.role = 'alert'
+          alertaSucesso.innerHTML = `
+              <strong>Bem-vindo, ${nomeUsuario}!</strong> Login realizado com sucesso.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          `
+
+          // Inserir o alerta no topo do formulário
+          const form = document.getElementById('login')
+          form.parentNode.insertBefore(alertaSucesso, form)
+
+          // Limpar os campos do formulário
+          form.reset()
+
+          // Simular redirecionamento após 3 segundos
+          setTimeout(() => {
+            alert('Redirecionando para a página principal...')
+            // Aqui você pode adicionar o código para redirecionar o usuário
+            // window.location.href = 'pagina-principal.html';
+          }, 3000)
+        }
+
+        function exibirErroValidacao() {
+          const alertaErro = document.createElement('div')
+          alertaErro.className = 'alert alert-danger alert-dismissible fade show mt-3'
+          alertaErro.role = 'alert'
+          alertaErro.innerHTML = `
+              <strong>Erro de validação!</strong> Por favor, verifique os campos e tente novamente.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          `
+
+          const form = document.getElementById('login')
+          form.parentNode.insertBefore(alertaErro, form.nextSibling)
+
+          // Remover o alerta após 5 segundos
+          setTimeout(() => {
+            alertaErro.remove()
+          }, 5000)
         }
       })
     </script>
