@@ -14,11 +14,12 @@
         <form id="login">
           <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
-            <input class="form-control" type="text" name="nome" id="nome">
+            <input class="form-control" type="text" name="nome" id="nome" required onblur="verificarSeNaoTaVazio(this)">
+            <p id="avisoNome"></p>
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Senha:</label>
-            <input class="form-control" type="password" name="senha" id="senha">
+            <input class="form-control" type="password" name="senha" id="senha" required >
           </div>
           <div class="mb-3 text-center">
             <button class="btn btn-primary w-50" type="submit">Entrar</button>
@@ -40,6 +41,25 @@
         window.alert('Bem vindo '+ nome);
       } else {
         window.alert('Usuário ou senha inválidos');
+      }
+    }
+    function verificarSeNaoTaVazio(elemento) {
+      if (elemento.value == '') {
+        elemento.style.borderColor ='red';
+        elemento.style.borderWidth = '2px';
+        elemento.style.borderStyle ='solid';
+        elemento.style.borderRadius = '5px';
+        elemento.style.backgroundColor = '#f2dede';
+        elemento.style.color = '#a94442';
+        document.getElementById('avisoNome').innerHTML = 'Preencha o campo!';
+      } else {
+        elemento.style.borderColor = '#ced4da';
+        elemento.style.borderWidth = '1px';
+        elemento.style.borderStyle ='solid';
+        elemento.style.borderRadius = '5px';
+        elemento.style.backgroundColor = '#fff';
+        elemento.style.color = '#495057';
+        document.getElementById('avisoNome').innerHTML = '';
       }
     }
   </script>
