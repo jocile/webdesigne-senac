@@ -28,6 +28,13 @@
                   <li class="list-group-item">
                     nota 2: <input type="number" name="nota2" id="nota2" />
                   </li>
+                  <li class="list-group-item">
+                    <label id="lrecuperacao">Insira a nota de recuperação: </label>
+                    <input type="number" name="recuperacao" id="recuperacao" />
+                  </li>
+                  <li class="list-group-item">
+                    <label id="resultado"></label>
+                  </li>
                 </ul>
               </div>
               <div class="card-footer text-muted">
@@ -40,7 +47,11 @@
         </div>
       </div>
     </div>
+  </div>
     <script>
+      recuperacao.style.display = 'none'
+      lrecuperacao.style.display = 'none'
+      resultado.style.display = 'none'
       document
         .getElementById('media')
         .addEventListener('submit', function (event) {
@@ -48,11 +59,16 @@
           var nota1 = document.getElementById('nota1').value
           var nota2 = document.getElementById('nota2').value
           var media = (parseFloat(nota1) + parseFloat(nota2)) / 2
+          var resultadoLabel = document.getElementById('resultado')
+
           if (media >= 7) {
-            alert(media + ' Aprovado!')
+            resultadoLabel.textContent = ' Aprovado com média '+ media
           } else {
-            alert('Vai estudar mais!')
+            resultadoLabel.textContent = 'Vai estudar mais!'
+            recuperacao.style.display = 'inline-block'
+            lrecuperacao.style.display = 'inline-block'
           }
+          resultadoLabel.style.display = 'inline-block'
         })
     </script>
 </body>
