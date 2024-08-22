@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      form fieldset {
+        margin-top: 20px;
+        border: 2px solid #cdd2d3;
+        border-radius: 10px;
+        background-color: #f3f7f8;
+        -webkit-box-shadow: 10px 10px 34px 8px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 34px 8px rgba(0, 0, 0, 0.75);
+        box-shadow: 10px 10px 34px 8px rgba(0, 0, 0, 0.473);
+      }
+      form fieldset legend {
+        background-color: #6e9fd8;
+        color: white; /* Texto branco para contrastar */
+        padding: 0px 10px; /* Espaçamento interno */
+        margin-bottom: 12px;
+        border-radius: 12px; /* Cantos arredondados */
+      }
+      form label {
+        text-align: right;
+        margin-right: 10px;
+        width: auto;
+      }
+      form div {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      form input,
+      form textarea,
+      form select {
+        width: 40%;
+        margin: 5px;
+        border: 2px solid #cdd2d3;
+        border-radius: 7px;
+        outline: none;
+      }
+      .form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      button {
+        background-color: #6e9fd8;
+        color: white;
+        margin: 8px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #1757a1;
+      }
+      .destacado {
+        background-color: #ffff99; /* Amarelo claro */
+        transition: background-color 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form">
+      <form action="">
+        <fieldset>
+          <legend><h3>Cálculo do pagamento</h3></legend>
+          <div>
+            <label for="Nome do produto">Nome do produto :</label>
+            <input type="text" name="nomeProduto" id="idNomeProduto" />
+          </div>
+          <div>
+            <label for="Quantidade do produto">Quantidade:</label>
+            <input
+              type="number"
+              name="quantidadeProduto"
+              id="idQuantidade"
+              min="1"
+              max="1000"
+            />
+          </div>
+          <div>
+            <label for="Preço do produto">Preço : R$</label>
+            <input
+              type="number"
+              name="precoProduto"
+              id="idValor"
+              min="1"
+              max="10000"
+            />
+          </div>
+          <div>
+            <label for="Forma de pagamento">Forma de pagamento :</label>
+            <select name="formapagamento" id="idFormPpagamento">
+              <option value="avista">à vista</option>
+              <option value="pix">PIX</option>
+              <option value="boleto">boleto</option>
+              <option value="cartao">cartão</option>
+            </select>
+          </div>
+          <div>
+            <label for="Valor final calculado">Valor final : R$</label>
+            <input type="number" name="valorFinal" id="valorFinal" disabled />
+          </div>
+          <div class="button-container">
+            <button type="button" id="calcular" onclick="calcularValor()">
+              Calcular
+            </button>
+            <button type="reset">Limpar</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <script>
+      //substitui caracteres potencialmente perigosos com codigos html e javascript para evitar ataques XSS
+      function sanitizeInput(input) {
+        return input.replace(/[<>&"']/g, function (match) {
+          switch (match) {
+            case '<':
+              return '&lt;'
+            case '>':
+              return '&gt;'
+            case '&':
+              return '&amp;'
+            case '"':
+              return '&quot;'
+            case "'":
+              return '&#39;'
+          }
+        })
+      }
+      function calcularValor() {
+        let nomeProduto = sanitizeInput(
+          document.getElementById('idNomeProduto').value
+        )
+        let quantidadeProduto = document.getElementById('idQuantidade').value
+        let precoProduto = parseFloat(document.getElementById('idValor').value)
+        let formaPagamento = document.getElementById('idFormPpagamento').value
+        let total = (quantidadeProduto * precoProduto).toFixed(2)
+        if (formaPagamento == 'avista' || formaPagamento == 'pix') {
+          total = total - total * 0.05
+        }
+        if (formaPagamento == 'cartao') {
+          total = total + total * 0.035
+        }
+        document.getElementById('valorFinal').value = total.toFixed(2)
+        let valorFinalInput = document.getElementById('valorFinal')
+        valorFinalInput.value = total.toFixed(2)
+        valorFinalInput.classList.add('destacado')
+        // Remove a classe de destaque após 2 segundos
+        setTimeout(() => {
+          valorFinalInput.classList.remove('destacado')
+        }, 2000)
+      }
+    </script>
+  </body>
+</html>
